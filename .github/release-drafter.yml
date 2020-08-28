@@ -1,2 +1,2 @@
 _extends: .github
-tag-template: somefeature-$NEXT_MINOR_VERSION
+tag-template: secure-post-script-$NEXT_MINOR_VERSION
