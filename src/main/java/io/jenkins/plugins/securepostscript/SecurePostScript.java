@@ -74,7 +74,6 @@ public class SecurePostScript extends RunListener<Run<?, ?>> implements Describa
 
     @Override
     public boolean configure(final StaplerRequest req, final JSONObject formData) throws Descriptor.FormException {
-      System.out.println(formData);
       final boolean sandbox = formData.getJSONObject("secureGroovyScript").getBoolean("sandbox");
       final String rawScript = formData.getJSONObject("secureGroovyScript").getString("script");
       final JSONArray paths = formData.getJSONObject("secureGroovyScript").optJSONArray("classpath");

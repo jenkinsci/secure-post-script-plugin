@@ -1,30 +1,28 @@
-# somefeature
+# secure-post-script
 
-[![Build Status](https://ci.jenkins.io/job/Plugins/job/somefeature-plugin/job/master/badge/icon)](https://ci.jenkins.io/job/Plugins/job/somefeature-plugin/job/master/)
-[![Contributors](https://img.shields.io/github/contributors/jenkinsci/somefeature-plugin.svg)](https://github.com/jenkinsci/somefeature-plugin/graphs/contributors)
-[![Jenkins Plugin](https://img.shields.io/jenkins/plugin/v/somefeature.svg)](https://plugins.jenkins.io/somefeature)
-[![GitHub release](https://img.shields.io/github/release/jenkinsci/somefeature-plugin.svg?label=changelog)](https://github.com/jenkinsci/somefeature-plugin/releases/latest)
-[![Jenkins Plugin Installs](https://img.shields.io/jenkins/plugin/i/somefeature.svg?color=blue)](https://plugins.jenkins.io/somefeature)
+[![Build Status](https://ci.jenkins.io/job/Plugins/job/secure-post-script-plugin/job/master/badge/icon)](https://ci.jenkins.io/job/Plugins/job/secure-post-script-plugin/job/master/)
+[![Contributors](https://img.shields.io/github/contributors/jenkinsci/secure-post-script-plugin.svg)](https://github.com/jenkinsci/secure-post-script-plugin/graphs/contributors)
+[![Jenkins Plugin](https://img.shields.io/jenkins/plugin/v/secure-post-script.svg)](https://plugins.jenkins.io/secure-post-script)
+[![GitHub release](https://img.shields.io/github/release/jenkinsci/secure-post-script-plugin.svg?label=changelog)](https://github.com/jenkinsci/secure-post-script-plugin/releases/latest)
+[![Jenkins Plugin Installs](https://img.shields.io/jenkins/plugin/i/secure-post-script.svg?color=blue)](https://plugins.jenkins.io/secure-post-script)
 
 ## Introduction
 
-TODO Describe what your plugin does here
+This plugin allows you to configure a global groovy script with assistance `secure-script` plugins, and at which condition the script will be executed. 
+![secure post script configuration ](/docs/secure-post-script.png)
+
+### Variables could be used in groovy script
+    - All Jenkins Environment Variables are availabl(`printenv`).
+    - `out.println()` could be used to print out information on build log.
+
 
 ## Getting started
-
-TODO Tell users how to configure your plugin here, include screenshots, pipeline examples and 
-configuration-as-code examples.
-
-## Issues
-
-TODO Decide where you're going to host your issues, the default is Jenkins JIRA, but you can also enable GitHub issues,
-If you use GitHub issues there's no need for this section; else add the following line:
-
-Report issues and enhancements in the [Jenkins issue tracker](https://issues.jenkins-ci.org/).
+sample code
+```groovy
+out.println("Job: $JOB_NAME build number: $BUILD_NUMBER has been built on $NODE_NAME ")
+```
 
 ## Contributing
-
-TODO review the default [CONTRIBUTING](https://github.com/jenkinsci/.github/blob/master/CONTRIBUTING.md) file and make sure it is appropriate for your plugin, if not then add your own one adapted from the base file
 
 Refer to our [contribution guidelines](https://github.com/jenkinsci/.github/blob/master/CONTRIBUTING.md)
 
