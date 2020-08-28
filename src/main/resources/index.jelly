@@ -1,4 +1,5 @@
 <?jelly escape-by-default='true'?>
 <div>
-    TODO
+  This plugin executes a secure groovy script post each build. <br/> 
+  The secure groovy script could be configured globally.
 </div>
