@@ -38,7 +38,6 @@ public class SecurePostScriptConfiguration extends GlobalConfiguration {
    */
   @DataBoundSetter
   public void setSecureGroovyScript(SecureGroovyScript secureGroovyScript) {
-    System.out.print("setSecureGroovyScript is called with: " + secureGroovyScript);
     this.secureGroovyScript = secureGroovyScript;
     save();
   }
