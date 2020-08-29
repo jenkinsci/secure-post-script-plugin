@@ -89,7 +89,8 @@ public class SecurePostScript extends RunListener<Run<?, ?>> implements Describa
         }
       }
 
-      this.secureGroovyScript = new SecureGroovyScript(rawScript, sandbox, cp).configuring(ApprovalContext.create());
+      this.secureGroovyScript = new SecureGroovyScript(rawScript, sandbox, cp)
+        .configuring(ApprovalContext.create().withCurrentUser());
       runCondition = Result.fromString(formData.getString("runCondition"));
       save();
       return super.configure(req, formData);
