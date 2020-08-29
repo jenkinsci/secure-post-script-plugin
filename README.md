@@ -8,7 +8,7 @@
 
 ## Introduction
 
-This plugin allows you to configure a global groovy script with assistance `secure-script` plugins, and at which condition the script will be executed. 
+This plugin allows you to configure a global groovy script with assistance of `secure-script` plugins, and at which condition the script will be executed. 
 ![secure post script configuration ](/docs/secure-post-script.png)
 
 ### Variables could be used in groovy script
