@@ -12,7 +12,7 @@ This plugin allows you to configure a global groovy script with assistance of `s
 ![secure post script configuration ](/docs/secure-post-script.png)
 
 ### Variables could be used in groovy script
-    - All Jenkins Environment Variables are availabl(`printenv`).
+    - All Jenkins Environment Variables are available(use `printenv` to print out).
     - `out.println()` could be used to print out information on build log.
 
 
