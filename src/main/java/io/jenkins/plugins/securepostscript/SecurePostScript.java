@@ -5,6 +5,7 @@ import hudson.Extension;
 import hudson.model.*;
 import hudson.model.listeners.RunListener;
 import org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.SecureGroovyScript;
+import org.jenkinsci.plugins.scriptsecurity.scripts.ApprovalContext;
 
 @Extension
 public class SecurePostScript extends RunListener<Run<?, ?>> {
@@ -21,6 +22,7 @@ public class SecurePostScript extends RunListener<Run<?, ?>> {
     final SecureGroovyScript script = SecurePostScriptConfiguration.get().getSecureGroovyScript();
     System.out.println("script to be executed: " + script.getScript());
     try {
+      script.configuring(ApprovalContext.create().withCurrentUser());
       new GroovyScriptRunner().run(script, envVars, listener);
     } catch (final Throwable e) {
       e.printStackTrace(listener.getLogger());
