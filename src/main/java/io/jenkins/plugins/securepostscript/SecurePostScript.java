@@ -15,8 +15,11 @@ public class SecurePostScript extends RunListener<Run<?, ?>> {
     final EnvVars envVars = getEnvVars(run, listener);
     SecurePostScriptConfiguration cfg = SecurePostScriptConfiguration.get();
     System.out.println("result: " + cfg.getRunCondition());
-    if (run.getResult().isWorseThan(SecurePostScriptConfiguration.get().getResultCondition())) {
-      return;
+    Result result = run.getResult();
+    if (result != null) {
+      if (result.isWorseThan(SecurePostScriptConfiguration.get().getResultCondition())) {
+        return;
+      }
     }
 
     final SecureGroovyScript script = SecurePostScriptConfiguration.get().getSecureGroovyScript();
@@ -31,8 +34,11 @@ public class SecurePostScript extends RunListener<Run<?, ?>> {
 
   private EnvVars getEnvVars(final Run run, final TaskListener listener) {
     try {
-      final EnvVars envVars = run.getEnvironment(listener);
-      envVars.put("BUILD_RESULT", run.getResult().toString());
+      EnvVars envVars = run.getEnvironment(listener);
+      Result result = run.getResult();
+      if (result != null) {
+        envVars.put("BUILD_RESULT", result.toString());
+      }
       return envVars;
     } catch (final Throwable e) {
       e.printStackTrace();
