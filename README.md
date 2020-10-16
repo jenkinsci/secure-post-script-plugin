@@ -21,7 +21,7 @@ sample code
 ```groovy
 out.println("Job: $JOB_NAME build number: $BUILD_NUMBER has been built on $NODE_NAME ")
 ```
-*Caution: All scripts have to be approved before it can be executed by this plugin. you could go to page https://jenkins-domain/scriptApproval to approve scripts. Otherwise, you'll see a error message: `Failed to execute groovy script configured by 'secure post script' plugin. Script not yet approved for me`*
+*Caution: All scripts have to be approved before it can be executed by this plugin. you could go to page https://jenkins-domain/scriptApproval to approve scripts. Otherwise, you'll see an error message: `Failed to execute groovy script configured by 'secure post script' plugin. Script not yet approved for me`.*
 
 
 ## Contributing
