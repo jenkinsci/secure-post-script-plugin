@@ -14,7 +14,7 @@ public class SecurePostScript extends RunListener<Run<?, ?>> {
   public void onCompleted(final Run run, final TaskListener listener) {
     final EnvVars envVars = getEnvVars(run, listener);
     SecurePostScriptConfiguration cfg = SecurePostScriptConfiguration.get();
-    System.out.println("result: " + cfg.getRunCondition());
+    listener.getLogger().println("result: " + cfg.getRunCondition());
     Result result = run.getResult();
     if (result != null) {
       if (result.isWorseThan(SecurePostScriptConfiguration.get().getResultCondition())) {
@@ -23,7 +23,11 @@ public class SecurePostScript extends RunListener<Run<?, ?>> {
     }
 
     final SecureGroovyScript script = SecurePostScriptConfiguration.get().getSecureGroovyScript();
-    System.out.println("script to be executed: " + script.getScript());
+    if (script == null) {
+      listener.getLogger().println("No script configured");
+      return;
+    }
+    listener.getLogger().println("script to be executed: " + script.getScript());
     try {
       script.configuring(ApprovalContext.create().withCurrentUser());
       new GroovyScriptRunner().run(script, envVars, listener);
@@ -41,7 +45,7 @@ public class SecurePostScript extends RunListener<Run<?, ?>> {
       }
       return envVars;
     } catch (final Throwable e) {
-      e.printStackTrace();
+      e.printStackTrace(listener.getLogger());
       return null;
     }
   }

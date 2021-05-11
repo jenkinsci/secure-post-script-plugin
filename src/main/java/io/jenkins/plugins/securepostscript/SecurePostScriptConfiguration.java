@@ -11,6 +11,8 @@ import org.kohsuke.stapler.DataBoundSetter;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
 
+import javax.annotation.CheckForNull;
+
 @Extension
 public class SecurePostScriptConfiguration extends GlobalConfiguration {
 
@@ -26,6 +28,7 @@ public class SecurePostScriptConfiguration extends GlobalConfiguration {
     load();
   }
 
+  @CheckForNull
   public SecureGroovyScript getSecureGroovyScript() {
     return secureGroovyScript;
   }
